@@ -19,3 +19,8 @@ Limitations:
 Being based on Autohotkey, this app may not be able to grab text from applications such as web browsers or applications based off of web browsers, and works best when it can grab text directly from memory.  If the app cannot grab the text directly, the manual keyboard and mouse methods may still work, and while effort has been made to prevent interruptions (by swapping to the mouse method if you are using copy and paste keys on the keyboard, or swapping to the keyboard method if you are dragging around applications that are in-use by this app) interruptions may still happen as these manual methods rely on simulated mouse clicks and keyboard button presses.
 
 If you would like to run the script directly from the .ahk file rather than the pre-compiled .exe, you'll need to download and install Autohotkey v1 from: https://www.autohotkey.com/download/ahk-install.exe
+
+Areas for improvement:
+Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
+
+4/28/24 Version 13 Update: Added colored bounding boxes when to help show the text areas/controls to click on when selecting output/input windows and buttons.
