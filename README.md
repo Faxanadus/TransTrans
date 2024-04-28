@@ -1,4 +1,4 @@
-# TransTrans (Transcription/Translation)
+# Trans/Trans (Transcription/Translation)
 Transcription and Translation facilitation application.
 
 This app can combine a separate transcription app and translation app together, and put the output from both in yet another app or save a transcription to a file, if needed.
