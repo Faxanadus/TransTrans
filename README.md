@@ -1,7 +1,7 @@
 # Trans/Trans (Transcription/Translation)
 Transcription and Translation facilitation application.
 
-This app can combine a separate transcription app and translation app together, and display the output from both in yet another app or save to a file, if needed.
+This app can combine a separate transcription app and translation app together, and display the output from both in yet another app or save to a log file, if needed.
 
 First, you will need to specify the source area for your transcribed text by clicking the 'Set Participant Output Area' button.
 A tooltip message under your mouse cursor will appear, showing which window the mouse is hovering over.  
