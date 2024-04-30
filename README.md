@@ -1,5 +1,7 @@
 <img src="https://github.com/Faxanadus/TransTrans/blob/main/TRTR23.png" width="128" />
-# Trans/Trans (Transcription/Translation)
+
+**# Trans/Trans (Transcription/Translation)**
+
 Transcription and Translation facilitation application.
 
 This app can combine a separate transcription app and translation app together, and display the output from both in yet another app or save to a log file, if needed.
