@@ -1,5 +1,5 @@
 
-![TRTR2](https://github.com/Faxanadus/TransTrans/assets/163935254/8066f777-a206-481f-9b25-ea98d78bf32c)
+![TRTR23](https://github.com/Faxanadus/TransTrans/assets/163935254/23957d87-5ad0-45a9-b2e5-c5490cd01a0d)
 
 # Trans/Trans (Transcription/Translation)
 Transcription and Translation facilitation application.
