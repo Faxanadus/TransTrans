@@ -1,4 +1,4 @@
-<img src="https://github.com/Faxanadus/TransTrans/blob/main/TRTR23.png" width="128" />
+<img src="https://github.com/Faxanadus/TransTrans/blob/main/ttlogo.png" width="128" />
 
 **# Trans/Trans (Transcription/Translation)**
 
