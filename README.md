@@ -1,3 +1,7 @@
+<img src="https://github.com/Faxanadus/TransTrans/blob/main/TRTR23.png" width="200" />
+
+
+
 # Trans/Trans (Transcription/Translation)
 Transcription and Translation facilitation application.
 
