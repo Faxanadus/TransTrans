@@ -13,7 +13,7 @@ If the text cannot be grabbed from directly from memory, a manual function will 
 
 If you are using a different translation app than the defaults shown under the "App Setup" button, you will need to specify the text input area, the translation output area, and the translate button of that translation app (if present). This can be done in the same manner as the first step by clicking the corresponging button in this app and then clicking the needed text areas and button of the translation app.
 
-This app automatically generates and continuosly updates a text file named --TransDisplayLog--.txt in the script's own directory, on startup.  This file is intended to be used by text readers (such an OBS Text(GDI+) Source) so the final output can be shown.  Optionally, a separate app text display area can be set up under the App Setup button.  If you are using an OBS Text(GDI+) Source, be sure to specify the --TransDisplayLog--.txt file location in the source properties and use the "Chatlog Mode" option, setting the "Chatlog Line Limit" as needed.
+This app automatically generates and continuosly updates a text file named -DisplayLog.txt in the script's own directory, on startup.  This file is intended to be used by text readers (such an OBS Text(GDI+) Source) so the final output can be shown.  Optionally, a separate app text display area can be set up under the App Setup button.  If you are using an OBS Text(GDI+) Source, be sure to specify the --TransDisplayLog--.txt file location in the source properties and use the "Chatlog Mode" option, setting the "Chatlog Line Limit" as needed.
 
 **Limitations**:
 Being based on Autohotkey, this app may not be able to grab text from applications such as web browsers or applications based off of web browsers, and works best when it can grab text directly from memory.  If the app cannot grab the text directly, the manual keyboard and mouse methods may still work, and while effort has been made to prevent interruptions (by swapping to the mouse method if you are using copy and paste keys on the keyboard, or swapping to the keyboard method if you are dragging around applications that are in-use by this app) interruptions may still happen as these manual methods rely on simulated mouse clicks and keyboard button presses.
@@ -21,7 +21,17 @@ Being based on Autohotkey, this app may not be able to grab text from applicatio
 If you would like to run the script directly from the .ahk file rather than the pre-compiled .exe, you'll need to download and install Autohotkey v1 from: https://www.autohotkey.com/download/ahk-install.exe
 
 **Areas for improvement**:
--Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
--Add network options to send/receive strings via an IP address and port as another method setting and getting text.
++Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
++Improve text grabbing capability to reduce the need to use simulator mouse clicks or keyboard button presses when a viable control area cannot be found.
 
-4/28/24 Version 13 Update: Added colored bounding boxes when to help show the text areas/controls to click on when selecting output/input windows and buttons.
+5/8/24 Version 14 Update: Added network functionality.
++Receive and send strings (with optional unique line IDs) to other applications via IP/Port
+     -Line IDs can be sent within each string, or as a separate comma separated integer as Big Endian or Little Endian.
++Send a message address with each message, so a receiving application (such as one using the OSC protocol) can direct the message to the right function.
++Send transcribed/translated content intended for display via IP/Port
++Reorganized UI to add more options.
++Added ability to save all settings on app close.
++Added checkbox to use or not use a DisplayLog.txt file (intended for use with text parsers).
+
+4/28/24 Version 13 Update: 
++Added colored bounding boxes when to help show the text areas/controls to click on when selecting output/input windows and buttons.
