@@ -27,11 +27,11 @@ If you would like to run the script directly from the .ahk file rather than the 
 5/8/24 Version 14 Update: Added network functionality.
 +Receive and send strings (with optional unique line IDs) to other applications via IP/Port
      -Line IDs can be sent within each string, or as a separate comma separated integer as Big Endian or Little Endian.
-+Send a message address with each message, so a receiving application (such as one using the OSC protocol) can direct the message to the right function.
-+Send transcribed/translated content intended for display via IP/Port
++Added option to send a message address with each message, so a receiving application (such as one using the OSC protocol) can direct the message to the right function.
++Option to send all transcribed/translated content intended for display via IP/Port, either all at once, or as individual lines.
 +Reorganized UI to add more options.
 +Added ability to save all settings on app close.
-+Added checkbox to use or not use a DisplayLog.txt file (intended for use with text parsers).
++Added checkbox to use or not use the -DisplayLog.txt file (intended for use with text parsers).
 
 4/28/24 Version 13 Update: 
 +Added colored bounding boxes when to help show the text areas/controls to click on when selecting output/input windows and buttons.
