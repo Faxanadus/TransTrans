@@ -22,7 +22,9 @@ If you would like to run the script directly from the .ahk file rather than the 
 
 **Areas for improvement**:
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
-+Improve text grabbing capability to reduce the need to use simulator mouse clicks or keyboard button presses when a viable control area cannot be found.
+
+5/19/24 Version 16 Update:
++Fixed an issue where transcription source fields found via IUIAutomationElements would not restore after this app is closed and re-opened.
 
 5/18/24 Version 15 Update: 
 +Alternate text grabbing method implemented via IUIAutomationElements. (http://msdn.microsoft.com/en-us/library/windows/desktop/ee671425(v=vs.85).aspx)
