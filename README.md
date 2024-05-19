@@ -23,6 +23,10 @@ If you would like to run the script directly from the .ahk file rather than the 
 **Areas for improvement**:
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
 
+5/19/24 Version 17 Update:
++Added Spanish translations to ToolTips, based on autodetection of OS language.
++Added option to customize "Max Characters Per Line" in the Options menu, which specifies the maximum number of characters that will be pushed to the display area before a new line is made.
+
 5/19/24 Version 16 Update:
 +Fixed an issue where transcription source fields found via IUIAutomationElements would not restore after this app is closed and re-opened.
 
