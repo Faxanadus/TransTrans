@@ -24,6 +24,11 @@ If you would like to run the script directly from the .ahk file rather than the 
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
 +Improve text grabbing capability to reduce the need to use simulator mouse clicks or keyboard button presses when a viable control area cannot be found.
 
+5/18/24 Version 15 Update: 
++Alternate text grabbing method implemented via IUIAutomationElements. (http://msdn.microsoft.com/en-us/library/windows/desktop/ee671425(v=vs.85).aspx)
+     -Credit to Descolada for the AHK implementation: https://github.com/Descolada/UIAutomation
++Added line splitting/queueing for each user.
+
 5/8/24 Version 14 Update: Added network functionality.
 +Receive and send strings (with optional unique line IDs) to other applications via IP/Port
      -Line IDs can be sent within each string, or as a separate comma separated integer as Big Endian or Little Endian.
