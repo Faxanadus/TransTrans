@@ -342,7 +342,7 @@ windowsFound := 0
 		 titleSet += 1
 		}
 		if ((windowTitles[A_Index] != "") && WinExist(windowTitles[A_Index]))
-		|| ((windowIds[A_Index] != "") && WinExist("ahk_id" windowTitles[A_Index]))
+		|| ((windowIds[A_Index] != "") && WinExist("ahk_id" windowIds[A_Index]))
 		{
 		 windowsFound += 1
 		}
@@ -1442,7 +1442,7 @@ GrabText(UIAEl, control, controlPosition, window, windowID, controlVerified, con
  grabbedText := ""
  forceAlternateMethod := false
  
-	if (UIAEl != "") && (IsObject(UIAEl))
+	if (UIAEl != "") && (IsObject(UIAEl)) && WinExist("ahk_id" windowID)
 	{
 	 grabbedText := UIAEl.GetCurrentPropertyValue(UIA_ValueValuePropertyId := 30045)
 	}
@@ -2216,7 +2216,7 @@ ShowAdvSetupButton:
 	 Gui,Font
 	 Gui, Add, Edit, x376 y53 w42 h17 gTransDelayEdit vTransDelayEdit, % translationDelay
 	 TransDelayEdit_TT := "The average number of milliseconds that it takes the translation app to translate any given message.`nIncrease this delay if the translation application is slow or there is lag when using Internet based translators."
-	TransDelayEdit_TTEs := "La cantidad promedio de milisegundos que le toma a la aplicación de traducción traducir un mensaje determinado.`nAumente este retraso si la aplicación de traducción es lenta o hay retrasos al utilizar traductores basados en Internet."
+	 TransDelayEdit_TTEs := "La cantidad promedio de milisegundos que le toma a la aplicación de traducción traducir un mensaje determinado.`nAumente este retraso si la aplicación de traducción es lenta o hay retrasos al utilizar traductores basados en Internet."
 	
 	 Gui,Font, BOLD 
 	 Gui, Add, Text, x240 y78 vMinDelayText, Text Sample Delay:
@@ -3019,16 +3019,29 @@ WatchCursor:
  MouseGetPos, mX, mY, id, mCtrl
  WinGetTitle, title, ahk_id %id%
  rectangleGuideColor := "Blue"
+ automationID := ""
+ 
 	if (settingTextOutputWindow = true)
-	 ToolTip, Click on the text output area for the participant.`nGetting Text Output Window Title and Control Area [ESC to Cancel]`n(Under Mouse position at X:%mX% Y:%mY%):`n%title%`n%mCtrl%
+	{
+	 mEl := UIA.SmallestElementFromPoint(mX, mY, true, id) ; UIA Deep search enabled by default
+		if (IsObject(mEl))
+		{
+		 windowElements[currentMember] := mEl
+		 mElPos := mEl.CurrentBoundingRectangle
+		 automationID := mEl.CurrentAutomationId
+		 windowElementIDs[currentMember] := automationID
+		 RangeTip(mElPos.l, mElPos.t, mElPos.r-mElPos.l, mElPos.b-mElPos.t, rectangleGuideColor, 4)
+		}
+	 ToolTip, Click on the text output area for the participant. [ESC to Cancel]`nX:%mX% Y:%mY% %title% %mCtrl% %automationID%
+	}
 	else if (settingTextInputWindow = true)
-	 ToolTip, Click on the area where text can be input for translation.`nGetting Text Input Window Title and Control Area [ESC to Cancel]`n(Under Mouse position at X:%mX% Y:%mY%):`n%title%`n%mCtrl%
+	 ToolTip, Click on the area where text can be input for translation. [ESC to Cancel]`nX:%mX% Y:%mY%: %title% %mCtrl%
 	else if (settingTranslationOutputWindow = true)
-	 ToolTip, Click on the area where translated text appears.`nGetting Translation Output Window Title and Control Area [ESC to Cancel]`n(Under Mouse position at X:%mX% Y:%mY%):`n%title%`n%mCtrl%
+	 ToolTip, Click on the area where translated text appears. [ESC to Cancel]`nX:%mX% Y:%mY% %title% %mCtrl%
 	else if (settingTranslatedTextDisplay = true)
-	 ToolTip, Click on the text input area you want the translated text to be displayed.`nGetting Translated Text Window Title and Control Area [ESC to Cancel]`n(Under Mouse position at X:%mX% Y:%mY%):`n%title%`n%mCtrl%
+	 ToolTip, Click on the text input area you want the translated text to be displayed.[ESC to Cancel]`nX:%mX% Y:%mY% %title% %mCtrl%
 	else if (settingTranslateButton = true)
-	 ToolTip, Click on the translation app translate button.`nGetting Translate Button and Control Area [ESC to Cancel]`n(Under Mouse position at X:%mX% Y:%mY%):`n%title%`n%mCtrl%
+	 ToolTip, Click on the translation app translate button. [ESC to Cancel]`nX:%mX% Y:%mY%: %title% %mCtrl%
 	else if (settingTextOutputCopyPos = true)
 	{
 	 ToolTip, **Now click on the COPY button.** [ESC to Cancel] X:%mX% Y:%mY%
@@ -3050,21 +3063,13 @@ WatchCursor:
 	 rectangleGuideColor := "Red"
 	}
 	
-	if (settingTextOutputWindow = true)
+	if (automationID = "")
 	{
-	 mEl := UIA.SmallestElementFromPoint(mX, mY, true, id) ; UIA Deep search enabled by default
-		if (IsObject(mEl))
-		{
-		 windowElements[currentMember] := mEl
-		 mElPos := mEl.CurrentBoundingRectangle
-		 windowElementIDs[currentMember] := mEl.CurrentAutomationId
-		 RangeTip(mElPos.l, mElPos.t, mElPos.r-mElPos.l, mElPos.b-mElPos.t, rectangleGuideColor, 4)
-		 return
-		}
+	 WinGetPos, wX, wY, wW, Wh, ahk_id %id%
+	 ControlGetPos, cX, cY, cW, cH, %mCtrl%, ahk_id %id%
+	 RangeTip(wX + cX, wY + cY, cW, cH, rectangleGuideColor, 4) ; DRAWS A COLORED RECTANGLE OVER THE CONTROL AREA/WINDOW
 	}
- WinGetPos, wX, wY, wW, Wh, ahk_id %id%
- ControlGetPos, cX, cY, cW, cH, %mCtrl%, ahk_id %id%
- RangeTip(wX + cX, wY + cY, cW, cH, rectangleGuideColor, 4) ; DRAWS A COLORED RECTANGLE OVER THE CONTROL AREA/WINDOW
+	
  return
 }
 
@@ -3549,16 +3554,16 @@ sendIntText(num, msg, msgAdr, reverseBytes, encoding="UTF-8")
 	 msg := "" . "," .  msg
 	}
  capacity := VarSetCapacity(buffer, length := StrPut(msg, encoding))
- originalCapacity = capacity
- remainder := 4 - Mod(capacity, 4)
+
+ remainder := 4 - Mod(length, 4)
 	if (remainder < 4) && (remainder > 0)
 	{
-	 capacity += remainder
-	 VarSetCapacity(buffer, capacity)
+	 length += remainder
+	 VarSetCapacity(buffer, length)
 	}
  StrPut(msg, &buffer, encoding)
  P := &buffer
-	Loop %capacity%
+	Loop %length%
 	{ 
 	 number := NumGet(&buffer, A_Index, "Char")
 		if (number = 7)
@@ -3566,7 +3571,7 @@ sendIntText(num, msg, msgAdr, reverseBytes, encoding="UTF-8")
 		 NumPut(0, &buffer, A_Index, "Char")
 		}
 	}
-	Loop %capacity%
+	Loop %length%
 	{ 
 	 number := NumGet(&buffer, A_Index, "Char")
 		if (number = 6)
@@ -3579,7 +3584,7 @@ sendIntText(num, msg, msgAdr, reverseBytes, encoding="UTF-8")
 		 break
 		}
 	}
- return this.send(&buffer, capacity)
+ return this.send(&buffer, length)
 }
   
 ReverseByteOrder(value)
