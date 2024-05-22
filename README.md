@@ -23,8 +23,12 @@ If you would like to run the script directly from the .ahk file rather than the 
 **Areas for improvement**:
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
 
-5/20/24 Version 17 Update:
-Fixed a new minor display bugs, and a bug that could cause the program to hang when finding a text display area.
+5/22/24 Version 19 Update:
++Fixed an issue where the sending port for network display messages would not be updated properly.
++Fixed and issue that could cause text to not be grabbed if the currently clipboard was empty (even if the clipboard was not being used).
+
+5/20/24 Version 18 Update:
++Fixed a new minor display bugs, and a bug that could cause the program to hang when finding a text display area.
 
 5/19/24 Version 17 Update:
 +Added Spanish translations to ToolTips, based on autodetection of OS language.
