@@ -24,8 +24,8 @@ If you would like to run the script directly from the .ahk file rather than the 
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
 
 10/3/24 Version 20 Update:
--Added the option to write timestamps to a log file with elapsed time since pressing the START button rather than the current time of day.
--Added Japanese translation for tooltips. 
++Added the option to write timestamps to a log file with elapsed time since pressing the START button rather than the current time of day.
++Added Japanese translation for tooltips. 
 
 5/22/24 Version 19 Update:
 +Fixed an issue where the sending port for network display messages would not be updated properly.
