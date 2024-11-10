@@ -23,6 +23,10 @@ If you would like to run the script directly from the .ahk file rather than the 
 **Areas for improvement**:
 +Add alternate language translations for instructions, GUI, and tooltips with automatic language detection based on OS language or selectable via Options.
 
+11/9/24 Version 21 Update:
++Change the name of the "Timestamps From Start" option to "Use .SRT Timestamp Format", and the program will now generate timestamps in that format compatible with many other programs like SubtitleEdit or Premier
++Fixed a bug that may have caused the text grabbing method to revert to copy/paste methods if there was second user enabled that didn't have a window set or their text window couldn't be found. 
+
 10/3/24 Version 20 Update:
 +Added the option to write timestamps to a log file with elapsed time since pressing the START button rather than the current time of day.
 +Added Japanese translation for tooltips. 
